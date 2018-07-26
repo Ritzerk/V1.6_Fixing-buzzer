@@ -95,11 +95,10 @@ class Oven (threading.Thread):
     def abort_run(self):
         self.reset()
 
-    def run(self, profile):		#removed profile
+    def run(self):		#removed profile
         temperature_count = 0
         last_temp = 0
         pid = 0
-	self.profile = profile
 	
         while True:
 	    self.door = "CLOSED"
@@ -120,7 +119,7 @@ class Oven (threading.Thread):
 				
 		#This is where we may ask user to open vent to cool, new function to pop window.
                 #self.set_cool(pid <= -1)	#Returns false or true, not required.
-		if self.runtime == profile.get_stage5time():	
+		if self.runtime == self.profile.get_stage5time():	
 		    self.set_buzz(True)
 		    time.sleep(0.5)
 		    self.set_buzz(False)
@@ -314,8 +313,8 @@ class Profile():
         self.name = obj["name"]
         self.data = sorted(obj["data"])
 	
-	def get_stage5time(self):
-		return self.data[4][0]			#return time when stage 5 starts, to send buzz
+    def get_stage5time(self):
+	return self.data[4][0]			#return time when stage 5 starts, to send buzz
 	
     def get_duration(self):
         return max([t for (t, x) in self.data])
