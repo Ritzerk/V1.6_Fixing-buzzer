@@ -558,7 +558,18 @@ $(document).ready(function()
                 if (x.air > 0.5) { $('#air').addClass("ds-led-air-active"); } else { $('#air').removeClass("ds-led-air-active"); }
                 if (x.temperature > hazardTemp()) { $('#hazard').addClass("ds-led-hazard-active"); } else { $('#hazard').removeClass("ds-led-hazard-active"); }
                 if (x.door == "OPEN") { $('#door').addClass("ds-led-door-open"); } else { $('#door').removeClass("ds-led-door-open"); }
-				if (x.runtime == x[4][0]) { window.alert("Cooling stage (stage 5). Please open vent.");}
+		if (x.runtime == x[4][0]) { 
+		    $.bootstrapGrowl("<span class=\"glyphicon glyphicon-exclamation-sign\"></span> <b>Info:</b><br/>Please open vent, cooling stage is on.", {
+                    ele: 'body', // which element to append to
+		    type: 'info', // (null, 'info', 'error', 'success')
+		    offset: {from: 'top', amount: 250}, // 'top', or 'bottom'
+		    align: 'center', // ('left', 'right', or 'center')
+		    width: 385, // (integer, or 'auto')
+		    delay: 5000,
+		    allow_dismiss: true,
+		    stackup_spacing: 10 // spacing between consecutively stacked growls.
+		    });
+		}
                 state_last = state;
             }
         };
