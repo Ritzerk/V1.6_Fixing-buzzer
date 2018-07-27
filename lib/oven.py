@@ -168,20 +168,20 @@ class Oven (threading.Thread):
             self.heat = 1.0
             if gpio_available:
                if config.heater_invert:
-                 GPIO.output(config.gpio_heat, GPIO.HIGH)
-                 time.sleep(self.time_step * value)
-                 GPIO.output(config.gpio_heat, GPIO.LOW)   
-               else:
                  GPIO.output(config.gpio_heat, GPIO.LOW)
                  time.sleep(self.time_step * value)
                  GPIO.output(config.gpio_heat, GPIO.HIGH)   
+               else:
+                 GPIO.output(config.gpio_heat, GPIO.HIGH)
+                 time.sleep(self.time_step * value)
+                 GPIO.output(config.gpio_heat, GPIO.LOW)   
         else:
             self.heat = 0.0
             if gpio_available:
                if config.heater_invert:
-                 GPIO.output(config.gpio_heat, GPIO.LOW)
-               else:
                  GPIO.output(config.gpio_heat, GPIO.HIGH)
+               else:
+                 GPIO.output(config.gpio_heat, GPIO.LOW)
 
 				 
     def set_buzz(self,value):
