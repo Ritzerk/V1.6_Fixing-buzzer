@@ -28,7 +28,7 @@ currency_type   = "GBP"   # Currency Symbol to show when calculating cost to run
 ### Outputs
 gpio_heat = 23  # Switches zero-cross solid-state-relay
 gpio_air  = 9   # Switches 0-phase det. solid-state-relay
-gpio_buzz = 10	#Buzzer connected to pin 19
+gpio_buzz = 11	# Buzzer connected to pin 11
 
 heater_invert = 0 # switches the polarity of the heater control
 
