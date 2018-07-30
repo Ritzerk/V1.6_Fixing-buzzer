@@ -120,15 +120,15 @@ class Oven (threading.Thread):
 				
 		#This is where we may ask user to open vent to cool, new function to pop window.
                 #self.set_cool(pid <= -1)	#Returns false or true, not required.
-		if (self.target < (last_temp + 30)):
-		    self.coolMsg = "NOW"	
-		    self.set_buzz(True)
-		    time.sleep(0.5)
-		    self.set_buzz(False)
-		    time.sleep(0.5)
-		    self.set_buzz(True)
-		    time.sleep(0.5)
-		    self.set_buzz(False)
+		#if (self.target < (last_temp + 30)):
+		 #   self.coolMsg = "NOW"	
+		  #  self.set_buzz(True)
+		   # time.sleep(0.5)
+		    #self.set_buzz(False)
+		    #time.sleep(0.5)
+		   # self.set_buzz(True)
+		   # time.sleep(0.5)
+		   # self.set_buzz(False)
 				
                 if(pid > 0):
                     # The temp should be changing with the heat on
