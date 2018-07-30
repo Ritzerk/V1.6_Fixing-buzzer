@@ -78,6 +78,7 @@ class Oven (threading.Thread):
         self.totaltime = 0
         self.target = 0
 	self.door = "CLOSED"
+	self.coolMsg = "NOT"
         self.state = Oven.STATE_IDLE
         self.set_heat(False)
         self.set_air(False)
@@ -119,7 +120,8 @@ class Oven (threading.Thread):
 				
 		#This is where we may ask user to open vent to cool, new function to pop window.
                 #self.set_cool(pid <= -1)	#Returns false or true, not required.
-		if self.runtime == self.profile.get_stage5time():	
+		if (self.target < (last_temp + 30))  
+		    self.coolMsg = "NOW":	
 		    self.set_buzz(True)
 		    time.sleep(0.5)
 		    self.set_buzz(False)
@@ -213,7 +215,8 @@ class Oven (threading.Thread):
             'heat': self.heat,	
             'air': self.air,
             'totaltime': self.totaltime,
-			'door': self.door
+	    'door': self.door,
+	    'coolMsg': self.coolMsg
         }
         return state
         
