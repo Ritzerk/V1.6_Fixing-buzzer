@@ -152,10 +152,10 @@ class Oven (threading.Thread):
 
                 if self.runtime >= self.totaltime:
 		    self.set_buzz(True)
-		    time.sleep(1)
+		    time.sleep(2)
 		    self.set_buzz(False)
 		    self.door = "OPEN"
-		    time.sleep(1)
+		    time.sleep(2)
                     self.reset()
             
             if pid > 0:
